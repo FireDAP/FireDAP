@@ -6,7 +6,7 @@ import lvgl as lv
 from hal.st7789 import *
 from gui.async_utils import Lv_Async
 from gui_driver import Display_Driver
-from kiwidap_ui import KiwiDAP_UI
+from script.firedap_ui import FireDAP_UI
 from ili9xxx import *
 from st77xx import St7735,ST77XX_PORTRAIT
 
@@ -22,7 +22,7 @@ pwm_frequency = 1_000_000
 
 spi_sck = machine.Pin( 10, machine.Pin.OUT )
 spi_mosi= machine.Pin( 11, machine.Pin.OUT )
-spi_miso= machine.Pin( 12, machine.Pin.IN   )
+spi_miso= machine.Pin( 12, machine.Pin.IN  )
 spi_dc  = machine.Pin( 8, machine.Pin.OUT )
 
 lcd_rst = machine.Pin( 15, machine.Pin.OUT )
