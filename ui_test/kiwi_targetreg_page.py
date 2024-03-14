@@ -1,4 +1,3 @@
-
 import lvgl as lv
 import usys as sys
 
@@ -19,13 +18,13 @@ class targetreg_page(base_page):
         table.add_style(table_style, lv.PART.ITEMS)
         table.set_cell_value(0,0,"Reg")
         table.set_cell_value(0,1,"Value")
-#        table.set_col_width(0,80)
-#        table.set_col_width(1,80)
+        table.set_col_width(0,80)
+        table.set_col_width(1,80)
         table.set_size(180,163)
         table.align(lv.ALIGN.TOP_MID, 0, 80)
 
         targetreg_label = lv.label(self)
-#        targetreg_label.set_recolor(True)
+        targetreg_label.set_recolor(True)
         targetreg_label.set_style_text_font(self.font_24, 0)
         targetreg_label.set_text("#87de87 TARGET@REG")
         targetreg_label.align(lv.ALIGN.TOP_MID, 0, 30)
@@ -42,4 +41,3 @@ def test():
         pass
 
 #test()
-

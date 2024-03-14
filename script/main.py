@@ -44,40 +44,41 @@ print( "lcd()" )
 lcd = St7789( lcd_baudrate, lcd_cs, spi_sck, spi_mosi, spi_miso, spi_dc, lcd_rst, lcd_bl )
 #  w, h = 160//4, 80//4
 #  bmp = build_square_buf( w, h )
-#  
+#
 #  t0 = time.ticks_us()
 #  lcd.draw_bitmap_dma( 30, 60, w, h, bmp )
 #  t1 = time.ticks_us()
-#  
+#
 #  print( "Maximum FPS @24MHz:", 24e6/( 160*80*16 ) ) # FPS = F/(W*H*BPP)
 #  print( "Achieved FPS:", 1/(16*(t1-t0)*1e-6) )       # Note: Test only draws 1/16 of the sreen area
-#  
+#
 #  print( "Draw TSC calibration pattern")
 #  w, h = 100, 100
 #  bmp = build_square_buf( w, h )
 lv.deinit()
 display_driver = Display_Driver( 160, 80, lcd, tsc )
 
-    
+
 try:
     scr = lv.scr_act()
     scr_style = lv.style_t()
     scr_style.set_bg_color(lv.color_hex(0x003a00))
     scr.add_style(scr_style,0)
-              
+
     label = lv.label(lv.scr_act())
     label_style = lv.style_t()
     label_style.set_text_color(lv.color_hex(0xffffff))
     label.set_text("Hello world")
     label.add_style(label_style,0)
     label.align(lv.ALIGN.CENTER, 0, 0)
-    
+
     lv.scr_load(scr)
-        
+
     print( "run" )
     lva = Lv_Async(refresh_rate=20 )
     asyncio.Loop.run_forever()
-    
+
 except Exception as error:
     print(error)
     lv.deinit()
+

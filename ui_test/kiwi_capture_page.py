@@ -1,9 +1,8 @@
-
 import lvgl as lv
 import usys as sys
 
 import kiwidap_ui
-from kiwidap_ui import kiwidap_ui,base_page,btn_style,bar_style,text_style
+from kiwidap_ui import kiwidap_ui,base_page,btn_style,bar_style
 import kiwidap_api
 
 
@@ -13,23 +12,18 @@ class capture_page(base_page):
 
     def ui(self):
         ##################### Connect Button #########################
-        ## font style
-        font1_stype = text_style(self.themes[self.current_theme]["font1_color"])
-        font2_stype = text_style(self.themes[self.current_theme]["font2_color"])
-
         ## Capture Button View
         capture_button_style = btn_style(self.themes[self.current_theme]["btn1_bg_color"],20)
-        capture_button = lv.button(self)
+        capture_button = lv.btn(self)
         capture_button.set_width(180)
         capture_button.set_height(83)
         capture_button.align(lv.ALIGN.CENTER, 0, 0)
         capture_button.add_style(capture_button_style, lv.PART.MAIN)
         capture_button_label = lv.label(capture_button)
-        # capture_button_label.set_recolor(True)
+        capture_button_label.set_recolor(True)
         ## Connect Label View
         capture_button_label.set_style_text_font(self.font_24, 0)
-        capture_button_label.add_style(font2_stype, lv.PART.MAIN)
-        capture_button_label.set_text("CAPTURE")
+        capture_button_label.set_text("#535d6c CAPTURE")
         capture_button_label.align(lv.ALIGN.CENTER,0 ,0)
         ## Connect Button Callback
         capture_button.add_event_cb(self.capture_button_cb, lv.EVENT.CLICKED, None)
@@ -39,14 +33,40 @@ class capture_page(base_page):
         except NameError:
             script_path = ''
 
-        ## image 1
-        image_1 = lv.image(self)
-        image_1.set_src("S:%s/picture/computer.png" % script_path)
+
+
+        # load png resource
+        try:
+            with open('./picture/pcb.png','rb') as f:
+                self.png_data = f.read()
+        except:
+            print("Could not find img_cogwheel_argb.png")
+            sys.exit()
+
+        image_pcb_png = lv.img_dsc_t({
+            'data_size': len(self.png_data),
+            'data': self.png_data
+        })
+
+        try:
+            with open('./picture/computer.png','rb') as f:
+                self.png_data = f.read()
+        except:
+            print("Could not find img_cogwheel_argb.png")
+            sys.exit()
+
+        image_computer_png = lv.img_dsc_t({
+            'data_size': len(self.png_data),
+            'data': self.png_data
+        })
+
+        image_1 = lv.img(self)
+        image_1.set_src(image_computer_png)
         image_1.align(lv.ALIGN.TOP_MID, 0, 30)
 
         ## image 2
-        image_2 = lv.image(self)
-        image_2.set_src("S:%s/picture/pcb.png" % script_path)
+        image_2 = lv.img(self)
+        image_2.set_src(image_pcb_png)
         image_2.align(lv.ALIGN.BOTTOM_MID, 0, -30)
 
 
@@ -65,6 +85,3 @@ def test():
         pass
 
 #test()
-
-
-

@@ -1,9 +1,8 @@
-
 import lvgl as lv
 import usys as sys
 
 import kiwidap_ui
-from kiwidap_ui import kiwidap_ui,base_page,btn_style,bar_style,drop_down_style,bg_style,text_style
+from kiwidap_ui import kiwidap_ui,base_page,btn_style,bar_style,drop_down_style,bg_style
 import kiwidap_api
 
 
@@ -13,10 +12,6 @@ class burn_page(base_page):
         super().__init__()
 
     def ui(self):
-        ## font style
-        font1_stype = text_style(self.themes[self.current_theme]["font1_color"])
-        font2_stype = text_style(self.themes[self.current_theme]["font2_color"])
-
         burn_firmware_drop_down_style = drop_down_style(self.themes[self.current_theme]['btn1_bg_color'])
         burn_firmware_drop_down = lv.dropdown(self)
         burn_firmware_drop_down.set_options("\n".join([
@@ -44,17 +39,17 @@ class burn_page(base_page):
         burn_frimware_download_bar.set_value(0,lv.ANIM.ON)
 
         ## Battery bar label view
-        burn_frimware_download_bar_label = lv.label(burn_frimware_download_bar)
-        burn_frimware_download_bar_label.align(lv.ALIGN.CENTER, 0 ,0)
-        burn_frimware_download_bar_label.add_style(font2_stype, lv.PART.MAIN)
-        burn_frimware_download_bar_label.set_text("89%")
+#        burn_frimware_download_bar_label = lv.label(burn_frimware_download_bar)
+#        burn_frimware_download_bar_label.align(lv.ALIGN.CENTER, 0 ,0)
+#        burn_frimware_download_bar_label.set_recolor(True)
+#        burn_frimware_download_bar_label.set_text("#535d6c 89%")
 
         ## burn target label
         burn_target_label = lv.label(self)
         burn_target_label.align(lv.ALIGN.BOTTOM_LEFT,30,-20)
-        burn_target_label.add_style(font1_stype, lv.PART.MAIN)
+        burn_target_label.set_recolor(True)
         burn_target_label.set_style_text_font(self.font_18, 0)
-        burn_target_label.set_text("TARGET")
+        burn_target_label.set_text("#87de87 TARGET")
 
 def test():
     app = kiwidap_ui()
@@ -66,5 +61,3 @@ def test():
         pass
 
 #test()
-
-

@@ -19,13 +19,13 @@ class targetmem_page(base_page):
         table.add_style(table_style, lv.PART.ITEMS)
         table.set_cell_value(0,0,"Addr")
         table.set_cell_value(0,1,"Value")
-#        table.set_col_width(0,80)
-#        table.set_col_width(1,80)
+        table.set_col_width(0,80)
+        table.set_col_width(1,80)
         table.set_size(180,163)
         table.align(lv.ALIGN.TOP_MID, 0, 80)
 
         targetmem_label = lv.label(self)
-#        targetmem_label.set_recolor(True)
+        targetmem_label.set_recolor(True)
         targetmem_label.set_style_text_font(self.font_24, 0)
         targetmem_label.set_text("#87de87 TARGET@MEM")
         targetmem_label.align(lv.ALIGN.TOP_MID, 0, 30)
@@ -41,5 +41,4 @@ def test():
     while True:
         pass
 
-test()
-
+#test()
