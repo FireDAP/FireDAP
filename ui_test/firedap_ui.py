@@ -3,7 +3,7 @@ import lvgl as lv
 import lv_utils
 from lv_utils import event_loop
 import fs_driver
-import kiwi_hardware
+import firedap_hardware
 
 print("Hello This is the KiwidapUi")
 
@@ -29,6 +29,12 @@ class btn_style(lv.style_t):
         self.set_bg_color(lv.color_hex(color))
         self.set_radius(lv.dpx(radius))
 
+class label_style(lv.style_t):
+    def __init__(self, color, font):
+        super().__init__()
+        self.set_text_color(lv.color_hex(color))
+        self.set_text_font(font)
+
 class bar_style(lv.style_t):
     def __init__(self, color):
         super().__init__()
@@ -43,7 +49,7 @@ class drop_down_style(lv.style_t):
         self.set_bg_color(lv.color_hex(color))
 
 
-class kiwidap_ui(kiwi_hardware.hal):
+class ui(firedap_hardware.hal):
     def __init__(self):
         super().__init__()
         self.pages = []
@@ -93,12 +99,11 @@ class base_page(lv.obj):
         self.fonts = []
         self.colors = {"pink":0xff80e5,"green":0x87de87,"perpel":0x9955ff, "grey":0x353535, "grey1":0x535d6c}
         self.current_theme = "Dracula_Theme"
-        self.Dracula_Theme = { "name": "Dracula_Theme", "bg_color": 0x353535,"bg1_color":0x555555, "btn1_bg_color": 0xff80e5, "btn1_label_color":0x535d6c , "btn2_bg_color":0x87de87, "btn2_label_color": 0x535d6c, "label_bg_color": 0x9955ff}
+        self.Dracula_Theme = { "name": "Dracula_Theme", "bg_color": 0x353535,"bg1_color":0x555555, "btn1_bg_color": 0xff80e5, "btn1_label_color":0x535d6c , "btn2_bg_color":0x87de87, "btn2_label_color": 0x535d6c, "label_bg_color": 0x9955ff, "label1_color": 0x87de87}
         self.add_theme(self.Dracula_Theme)
 
         page_style = bg_style(self.themes[self.current_theme]["bg_color"],50)
         self.add_style(page_style, lv.PART.MAIN)
-
 
         ## Load font , it should be late with fs driver init
         self.font_12 = lv.font_load("S:%s/font/font-12.font" % script_path)

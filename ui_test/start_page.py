@@ -1,9 +1,9 @@
 import lvgl as lv
 import usys as sys
 
-import kiwidap_ui
-from kiwidap_ui import kiwidap_ui,base_page,btn_style,bar_style
-import kiwidap_api
+import firedap_ui
+from firedap_ui import ui,base_page,btn_style,bar_style
+import firedap_api
 
 
 class start_page(base_page):
@@ -103,7 +103,10 @@ class start_page(base_page):
         memory_meter_label.set_recolor(True)
         memory_meter_label.set_style_text_font(self.font_source_24, 0)
         memory_meter_label.set_text("#87de87 MEM")
-
+        memory_meter_label = lv.label(self)
+        memory_meter_label.align(lv.ALIGN.BOTTOM_LEFT, 85, -35)
+        memory_meter_label.set_recolor(True)
+        memory_meter_label.set_text("#87de87 32%")
 
     ## CallBack Function
     def connect_button_cb(self,event):
@@ -114,7 +117,7 @@ class start_page(base_page):
 
 
 def test():
-    app = kiwidap_ui()
+    app = ui()
     start_page_instance = start_page()
     start_page_instance.ui()
     app.add_page(start_page_instance)

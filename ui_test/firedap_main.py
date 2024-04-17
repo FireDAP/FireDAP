@@ -1,21 +1,21 @@
 import lvgl as lv
 import usys as sys
 
-import kiwidap_ui
-from kiwidap_ui import kiwidap_ui,base_page,btn_style,bar_style
-import kiwidap_api
+import firedap_ui
+from firedap_ui import ui,base_page,btn_style,bar_style
+import firedap_api
 
 
-from kiwi_start_page import start_page
-from kiwi_burn_page import burn_page
-from kiwi_capture_page import capture_page
-from kiwi_targetreg_page import targetreg_page
-from kiwi_targetmem_page import targetmem_page
-from kiwi_aboutme_page import aboutme_page
+from start_page import start_page
+from burn_page import burn_page
+from capture_page import capture_page
+from targetreg_page import targetreg_page
+from targetmem_page import targetmem_page
+from aboutme_page import aboutme_page
 
 
 def main():
-    app = kiwidap_ui()
+    app = ui()
 
     start_page_instance = start_page()
     start_page_instance.ui()

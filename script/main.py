@@ -58,7 +58,6 @@ lcd = St7789( lcd_baudrate, lcd_cs, spi_sck, spi_mosi, spi_miso, spi_dc, lcd_rst
 lv.deinit()
 display_driver = Display_Driver( 160, 80, lcd, tsc )
 
-
 try:
     scr = lv.scr_act()
     scr_style = lv.style_t()
@@ -81,4 +80,5 @@ try:
 except Exception as error:
     print(error)
     lv.deinit()
+
 

@@ -1,9 +1,9 @@
 import lvgl as lv
 import usys as sys
 
-import kiwidap_ui
-from kiwidap_ui import kiwidap_ui,base_page,btn_style,bar_style
-import kiwidap_api
+import firedap_ui
+from firedap_ui import ui,base_page,btn_style,bar_style
+import firedap_api
 
 
 class capture_page(base_page):
@@ -76,7 +76,7 @@ class capture_page(base_page):
 
 
 def test():
-    app = kiwidap_ui()
+    app = ui()
     capture_page_instance = capture_page()
     capture_page_instance.ui()
     app.add_page(capture_page_instance)
